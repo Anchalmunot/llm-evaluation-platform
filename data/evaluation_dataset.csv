@@ -1,0 +1,11 @@
+id,question,expected_answer,category
+1,"What does CPU stand for?","Central Processing Unit","Computer Science"
+2,"What is a primary key in DBMS?","A primary key uniquely identifies each record in a database table.","DBMS"
+3,"What is Python?","Python is a high-level programming language.","Programming"
+4,"What does LLM stand for?","Large Language Model","Artificial Intelligence"
+5,"What is HTTP?","HTTP stands for Hypertext Transfer Protocol.","Web"
+6,"What is an operating system?","An operating system manages computer hardware and software resources.","Operating Systems"
+7,"What is inheritance in object-oriented programming?","Inheritance allows a class to acquire properties and behavior from another class.","OOP"
+8,"What is machine learning?","Machine learning is a method where computers learn patterns from data to make predictions or decisions.","Machine Learning"
+9,"What is SQL?","SQL stands for Structured Query Language and is used to manage relational databases.","DBMS"
+10,"What is an API?","An API is an interface that allows different software applications to communicate with each other.","Software"

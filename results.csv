@@ -1,0 +1,180 @@
+id,question,expected_answer,model_answer,similarity_score,latency
+1,What does CPU stand for?,Central Processing Unit,CPU stands for Central Processing Unit.,0.6946339011192322,3.295914888381958
+2,What is a primary key in DBMS?,A primary key uniquely identifies each record in a database table.,"A primary key in a Database Management System (DBMS) is a special type of field (column) in a database table that uniquely identifies each record (row) in that table. It ensures that each record is unique and prevents duplicate entries. 
+
+Here are some key points about primary keys:
+
+1. **Uniqueness**: Each value in the primary key column must be unique. No two rows in the table can have the same primary key value.
+
+2. **Non-nullability**: Primary key values cannot be null. This means that every row in the table must have a value for the primary key column.
+
+3. **Uniqueness**: The primary key value must be constant within a row. It does not change during the lifetime of a row. 
+
+4. **Non-nullable**: You cannot leave the primary key column blank. It must have a value, which can be a value entered by the user or a system-generated value (like a auto-incremented value).
+
+5. **Single Column or Composite**: A primary key can be defined on a single column or a combination of multiple columns (a composite primary key). In the latter case, the combination of values in these columns must be unique.
+
+6. **Primary Key Constraints**: In SQL, a primary key is defined by setting the NOT NULL constraint and the UNIQUE constraint on a column.
+
+7. **Usage**: Primary keys are essential for identifying and referencing rows in the database. They are used to create relationships with other tables (foreign keys) in the database.
+
+8. **Auto-Increment**: In many DBMS, the primary key of a table is often auto-incremented, meaning each new record automatically gets the next available value for that primary key.
+
+9. **Indexing**: The database automatically creates an index on the primary key column to speed up the query performance, especially when searching and sorting based on the primary key.
+
+In summary, the primary key is a fundamental component of a database design that helps ensure data integrity and provides a way to uniquely identify each row in a table.",0.6602294445037842,18.148979902267456
+3,What is Python?,Python is a high-level programming language.,"Python is a high-level, general-purpose programming language that was first released in 1991. It is known for its readability and ease of learning, which is due in part to its simple syntax derived from C-like languages. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming. 
+
+Some key features of Python include:
+
+1. **Interpreted Language**: Python code is interpreted rather than compiled, which makes it easier to run and debug programs without the need for a separate compilation step.
+
+2. **Dynamic Typing**: Variables in Python do not need to be declared with a specific data type, and their type can be determined at runtime.
+
+3. **Garbage Collection**: Python's memory management system automatically handles memory allocation and deallocation, which can simplify and optimize memory usage in programs.
+
+4. **Extensive Standard Library**: Python comes with a comprehensive standard library that includes modules for almost every aspect of programming, from handling text files to network programming, web development, and more.
+
+5. **Versatility**: Python is used in a wide range of applications, including web development, scientific computing, artificial intelligence, data analysis, machine learning, game development, automation scripts, and more.
+
+6. **Community and Ecosystem**: Python has a large and active community, which contributes to its vast ecosystem of third-party libraries and frameworks. This includes the ability to integrate with other languages and tools, making Python very versatile.
+
+7. **Educational**: Python is widely used in educational settings due to its simplicity and comprehensive documentation, making it a popular language for teaching programming concepts.
+
+Python is a versatile language that can be used for a variety of tasks, from simple scripting to complex software development. Its popularity has grown significantly over the years, and it continues to be one of the most popular programming languages in the world.",0.7394304275512695,18.58465313911438
+4,What does LLM stand for?,Large Language Model,LLM stands for Language Large Model.,0.5436654090881348,0.4854409694671631
+5,What is HTTP?,HTTP stands for Hypertext Transfer Protocol.,"HTTP, or Hypertext Transfer Protocol, is a set of rules for exchanging data over the Internet. It's a foundational protocol of the World Wide Web. HTTP defines how messages are formatted and transmitted, and it specifies networking requirements for the web. 
+
+Here are some key points about HTTP:
+
+1. **Purpose**: HTTP is used to transfer data over the web. Data includes web pages, images, videos, and other web resources.
+
+2. **Two Versions**: There are two main versions of HTTP: HTTP/1.0 and HTTP/1.1. HTTP/1.1 is the current widely used version.
+
+3. **Request and Response**: HTTP is stateless, which means it does not maintain any state information between requests. Each HTTP request is independent of other requests. HTTP uses methods like GET, POST, PUT, DELETE, etc., to send commands to the server.
+
+4. **GET Method**: This method is used to retrieve data from a server. It's the most common method and is generally safe and idempotent (i.e., it has the same effect regardless of how many times it is invoked).
+
+5. **POST Method**: This method is used to send data to a server to create a new resource. It's not safe and cannot be used to update resources on the server.
+
+6. **Header Fields**: HTTP uses header fields to provide additional information about the request or response. These headers can contain various pieces of information such as the server's response status, the type of content being requested or served, and more.
+
+7. **URLs**: HTTP uses URLs (Uniform Resource Locators) to identify the resources on the web. URLs consist of a protocol (like HTTP or HTTPS), a domain name, and a path to the resource.
+
+8. **Security**: HTTP operates over plain TCP (Transmission Control Protocol) and is not designed to secure data. For secure data transmission, HTTPS (HTTP over SSL/TLS) is often used.
+
+HTTP is a crucial part of how the web works, enabling web browsers and web servers to communicate effectively.",0.8221035599708557,20.107000827789307
+6,What is an operating system?,An operating system manages computer hardware and software resources.,"An operating system (OS) is a system software that acts as a bridge between the hardware of a computer and the programs that run on it. Its primary role is to manage and allocate system resources like CPU, memory, and input/output operations efficiently, creating an environment in which other software can execute.
+
+Key functions of an operating system include:
+
+1. **Resource Management**: Allocating and managing hardware resources like CPU, memory, and input/output devices.
+2. **Process Management**: Controlling and managing tasks (processes) and their execution.
+3. **Storage Management**: Handling how data is stored and retrieved from storage devices.
+4. **Memory Management**: Allocating and deallocating memory to processes.
+5. **Device Management**: Managing input and output devices such as printers, scanners, and network interfaces.
+6. **Security**: Implementing security mechanisms to protect the system from unauthorized access or damage.
+7. **Networking**: Managing network resources and providing network services.
+8. **User Interface**: Providing an interface between the user and the operating system, often through a graphical user interface (GUI) or command-line interface.
+
+Operating systems can vary significantly in their design and features, from specialized systems like embedded systems, which are used in devices like smartphones, to general-purpose systems like Windows, macOS, and Linux, which are used in a wide variety of devices and environments.",0.8184270858764648,14.82872200012207
+7,What is inheritance in object-oriented programming?,Inheritance allows a class to acquire properties and behavior from another class.,"Inheritance is a fundamental concept in object-oriented programming (OOP) that allows new classes to be created from existing classes. It enables the sharing of properties and behaviors (attributes and methods) between classes. Here are the key aspects of inheritance:
+
+1. **Hierarchical Structure**: Inheritance creates a hierarchical structure where a class is derived from one or more base classes. The base class, also known as the superclass or parent class, contains the common properties and behaviors that are inherited by the derived class, also known as the subclass or child class.
+
+2. **Encapsulation**: Inheritance supports encapsulation by allowing the creation of more specialized classes without needing to repeat the implementation of common functionality from the base class. This reduces code duplication and promotes code reusability.
+
+3. **Polymorphism**: Inheritance is closely tied with polymorphism. When a derived class overrides a method from its base class, it can change the way the method works in the context of the derived class. This allows for more flexible and adaptable code.
+
+4. **Extending Behavior**: Derived classes can inherit attributes and methods from their base class and also add new methods, attributes, or change the implementation of existing ones. This allows for the creation of specialized classes that inherit the functionality of their parent classes.
+
+5. **Specialization**: Derived classes can be specialized by adding new methods or attributes, or by overriding methods from the base class with new implementations. This promotes specialization and specialization by extension.
+
+### Example in Python
+
+Here's a simple example of inheritance in Python:
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        raise NotImplementedError(""Subclasses must implement this method"")
+
+class Dog(Animal):
+    def speak(self):
+        return ""Woof""
+
+class Cat(Animal):
+    def speak(self):
+        return ""Meow""
+
+dog = Dog(""Buddy"")
+cat = Cat(""Whiskers"")
+
+print(dog.speak())  # Output: Woof
+print(cat.speak())  # Output: Meow
+```
+
+In this example, the `Animal` class is the base class, and `Dog` and `Cat` are derived classes. Both derived classes inherit the `name` attribute and the `speak` method from `Animal`. However, they each override the `speak` method to provide their own implementation.
+
+### Benefits of Inheritance
+
+- **Simplicity and Readability**: Inheritance allows for the creation of more readable and maintainable code.
+- **Code Reusability**: By inheriting from a base class, derived classes can inherit attributes and methods, reducing code duplication.
+- **Flexibility**: Inheritance enables the creation of specialized classes that inherit the functionality of their base classes, promoting flexibility and scalability.
+
+### Limitations
+
+While inheritance offers many benefits, it also has some limitations, such as tight coupling between classes and potential complexity in maintaining and understanding the inheritance hierarchy.",0.7379478216171265,29.054022073745728
+8,What is machine learning?,Machine learning is a method where computers learn patterns from data to make predictions or decisions.,"Machine learning is a field of study that is part of artificial intelligence. It is a method to let computers learn from data and make decisions or predictions based on that learning, without being explicitly programmed.
+
+At its core, machine learning involves algorithms that can improve the quality of their output as they are exposed to more data. This is often done using statistical models. The goal is to allow machines to learn and recognize patterns in data, and then use this learning to make predictions or decisions without being explicitly programmed.
+
+Machine learning is used in a variety of applications, including:
+
+1. **Predictive Analytics**: Using historical data to predict future outcomes, such as sales forecasts or customer behavior.
+2. **Personalization**: Customizing experiences for users, such as recommendations on e-commerce websites or personalized news feeds.
+3. **Image and Speech Recognition**: Processing and analyzing images and audio data.
+4. **Recommendation Systems**: Recommending products, services, or content based on user behavior and preferences.
+5. **Healthcare**: Diagnosing diseases, predicting patient outcomes, and developing personalized treatment plans.
+6. **Automation**: Automating tasks, such as spam detection, fraud detection, and robotic process automation (RPA).
+
+Machine learning is becoming increasingly important as data sets grow larger and more complex, and as computational resources become more powerful.",0.803978681564331,20.353138208389282
+9,What is SQL?,SQL stands for Structured Query Language and is used to manage relational databases.,"SQL stands for Structured Query Language. It is a programming language used primarily for managing and retrieving data stored in relational databases. SQL is used to create, read (select), update, and delete data in a database. 
+
+Here are some key points about SQL:
+
+1. Purpose: SQL is used to interact with relational databases. It is used to manipulate and retrieve data.
+
+2. Data Manipulation Language (DML): SQL is a DML language. This means it is used to modify or manipulate data in a database. Some common DML operations include INSERT, DELETE, UPDATE, and SELECT.
+
+3. Data Definition Language (DDL): While SQL is primarily a DML language, it also contains elements of DDL. DDL statements are used to define and modify the structure of the database, such as creating or altering tables, views, and other database objects.
+
+4. Data Control Language (DCL): SQL also includes DCL commands, which are used to control access to the database. These commands include GRANT and REVOKE, which allow you to specify which users are allowed to access which database objects.
+
+5. Syntax: SQL has a specific syntax that is consistent across most relational database management systems (RDBMS). This consistency is part of what makes SQL powerful and widely used.
+
+SQL is a fundamental tool for anyone working with databases, whether they are data analysts, database administrators, or programmers. Its use is ubiquitous in the modern world of data management and analysis.",0.7365602254867554,18.38843321800232
+10,What is an API?,An API is an interface that allows different software applications to communicate with each other.,"An API, or Application Programming Interface, is a set of rules and protocols for building software and applications. It defines how software components should interact. APIs are used when programmers want to create software applications that can interact with existing applications or services. This interaction can involve exchanging data, adding features to a software application, or simply accessing the features of another software application.
+
+Here are some key points about APIs:
+
+1. **Purpose**: APIs are used to allow different software applications to communicate with each other and share data.
+
+2. **Types of APIs**: 
+   - **RESTful APIs**: Use HTTP methods (GET, POST, PUT, DELETE) to interact with a server.
+   - **SOAP APIs**: Use XML messages and a standardized interface based on XML schema.
+   - **GraphQL APIs**: Provide a data query language and a data representation language for interacting with distributed data systems.
+   - **WebSocket APIs**: Allow real-time bidirectional communication between a browser and a server.
+
+3. **Security**: APIs often include security mechanisms to protect data and control access to resources, such as authentication and authorization.
+
+4. **Interoperability**: APIs facilitate interoperability, enabling different software components to work together even if they were not designed to do so.
+
+5. **Scalability**: Well-designed APIs can scale, as they provide a clean and consistent interface through which various applications can access and interact with backend systems.
+
+6. **Integration**: APIs enable applications to integrate with different services, databases, and other applications, making it easier to build complex and integrated systems.
+
+APIs are fundamental in modern software development, playing a crucial role in connecting different applications and services.",0.812026858329773,22.879183053970337
