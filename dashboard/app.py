@@ -67,30 +67,30 @@ total_questions = len(df)
 
 average_similarity = df["similarity_score"].mean()
 
+average_correctness = df["correctness_score"].mean() * 100
+
 average_latency = df["latency"].mean()
 
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 
 with col1:
-
-    st.metric(
-        "Questions Evaluated",
-        total_questions
-    )
-
+    st.metric("Questions Evaluated", total_questions)
 
 with col2:
-
     st.metric(
         "Average Similarity",
         f"{average_similarity:.3f}"
     )
 
-
 with col3:
+    st.metric(
+        "Correctness",
+        f"{average_correctness:.1f}%"
+    )
 
+with col4:
     st.metric(
         "Average Latency",
         f"{average_latency:.2f} sec"
@@ -127,6 +127,29 @@ st.plotly_chart(
     use_container_width=True
 )
 
+st.subheader("Correctness by Question")
+
+fig_correctness = px.bar(
+    df,
+    x="id",
+    y="correctness_score",
+    hover_data=["question"],
+    labels={
+        "id": "Question ID",
+        "correctness_score": "Correctness"
+    }
+)
+
+fig_correctness.update_yaxes(
+    range=[0, 1],
+    tickvals=[0, 1],
+    ticktext=["Incorrect", "Correct"]
+)
+
+st.plotly_chart(
+    fig_correctness,
+    use_container_width=True
+)
 
 # -----------------------------------
 # Latency chart
@@ -165,6 +188,7 @@ display_columns = [
     "expected_answer",
     "model_answer",
     "similarity_score",
+    "correctness_score",
     "latency"
 ]
 
@@ -181,3 +205,4 @@ st.dataframe(
     use_container_width=True,
     hide_index=True
 )
+
