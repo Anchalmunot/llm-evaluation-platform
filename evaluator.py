@@ -5,17 +5,12 @@ import time
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-
-# -----------------------------------
-# 1. Load evaluation dataset
-# -----------------------------------
+# Load evaluation dataset
 
 df = pd.read_csv("data/evaluation_dataset.csv")
 
 
-# -----------------------------------
-# 2. Load embedding model
-# -----------------------------------
+# Load embedding model
 
 print("Loading embedding model...")
 
@@ -26,18 +21,14 @@ embedding_model = SentenceTransformer(
 print("Embedding model loaded!")
 
 
-# -----------------------------------
-# 3. Ollama configuration
-# -----------------------------------
+# Ollama configuration
 
 url = "http://localhost:11434/api/generate"
 
 model = "qwen2.5:3b"
 
 
-# -----------------------------------
-# 4. Ask the LLM
-# -----------------------------------
+# Ask the LLM
 
 def ask_llm(question):
 
@@ -78,16 +69,72 @@ def calculate_similarity(expected, actual):
     return float(similarity)
 
 
+
+# Calculate correctness
 # -----------------------------------
-# 6. Store results
+# 6. LLM-as-a-Judge correctness
 # -----------------------------------
+
+def calculate_correctness(question, expected, actual):
+
+    judge_prompt = f"""
+You are an expert evaluator of AI-generated answers.
+
+Determine whether the model answer is factually correct.
+
+Question:
+{question}
+
+Expected Answer:
+{expected}
+
+Model Answer:
+{actual}
+
+Rules:
+1. Compare the model answer with the expected answer.
+2. Different wording is acceptable.
+3. Additional correct information is acceptable.
+4. If the model answer contains a factual error, mark it INCORRECT.
+5. Pay special attention to definitions, names, abbreviations, and factual claims.
+6. Do not judge based only on wording similarity.
+
+Return exactly one word:
+CORRECT
+or
+INCORRECT
+
+Your final answer must be exactly CORRECT or INCORRECT.
+"""
+
+    data = {
+        "model": model,
+        "prompt": judge_prompt,
+        "stream": False
+    }
+
+    response = requests.post(
+        url,
+        json=data
+    )
+
+    judge_response = response.json()["response"].strip().upper()
+
+    if judge_response == "CORRECT":
+        return 1
+
+    return 0
+
+
+
+
+
+# Store results
 
 results = []
 
 
-# -----------------------------------
-# 7. Evaluate each question
-# -----------------------------------
+# Evaluate each question
 
 for index, row in df.iterrows():
 
@@ -103,6 +150,11 @@ for index, row in df.iterrows():
         expected_answer,
         answer
     )
+    correctness_score = calculate_correctness(
+    question,
+    expected_answer,
+    answer
+)
 
     print("Qwen Answer:", answer)
 
@@ -110,6 +162,10 @@ for index, row in df.iterrows():
         "Similarity Score:",
         round(similarity_score, 3)
     )
+    print(
+    "Correctness:",
+    "Correct" if correctness_score == 1 else "Incorrect"
+)
 
     print(
         "Latency:",
@@ -120,31 +176,31 @@ for index, row in df.iterrows():
 
     results.append({
 
-        "id": row["id"],
+    "id": row["id"],
 
-        "question": question,
+    "question": question,
 
-        "expected_answer": expected_answer,
+    "expected_answer": expected_answer,
 
-        "model_answer": answer,
+    "model_answer": answer,
 
-        "similarity_score": similarity_score,
+    "category": row["category"],
 
-        "latency": latency
+    "similarity_score": similarity_score,
 
-    })
+    "correctness_score": correctness_score,
+
+    "latency": latency
+
+})
 
 
-# -----------------------------------
-# 8. Convert results to DataFrame
-# -----------------------------------
+# Convert results to DataFrame
 
 results_df = pd.DataFrame(results)
 
 
-# -----------------------------------
-# 9. Save results
-# -----------------------------------
+# Save results
 
 results_df.to_csv(
     "results.csv",
